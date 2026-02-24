@@ -1102,7 +1102,7 @@ let pagefind = null;
 async function loadPagefind() {{
   if (pagefind) return;
   try {{
-    pagefind = await import('./_pagefind/pagefind.js');
+    pagefind = await import('./pagefind/pagefind.js');
     await pagefind.init();
   }} catch (e) {{
     pagefind = null;
