@@ -44,15 +44,15 @@ def main():
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {{
-    --bg-primary: #08090b;
-    --bg-secondary: #0e1013;
-    --bg-card: #131518;
-    --bg-shelf: #0b0c0f;
-    --border: #1c1f25;
-    --border-active: #2a2e38;
+    --bg-primary: #1e2028;
+    --bg-secondary: #252930;
+    --bg-card: #2d3139;
+    --bg-shelf: #1b1e26;
+    --border: #383e4a;
+    --border-active: #4a5260;
     --text-primary: #e4e6eb;
     --text-secondary: #8b8f9a;
-    --text-muted: #53565f;
+    --text-muted: #7a8596;
     --accent: #34d399;
     --accent-dim: #1a7a52;
     --accent-glow: rgba(52, 211, 153, 0.12);
@@ -74,6 +74,47 @@ def main():
 
     --hex-size: 72px;
   }}
+
+  body.color-light {{
+    --bg-primary:    #f6f8fa;
+    --bg-secondary:  #ffffff;
+    --bg-card:       #ffffff;
+    --bg-shelf:      #f0f2f5;
+    --border:        #d0d7de;
+    --border-active: #9ba3af;
+    --text-primary:  #1f2328;
+    --text-secondary:#57606a;
+    --text-muted:    #636e7b;
+    --accent:        #1a7a52;
+    --accent-dim:    #0d4a31;
+    --accent-glow:   rgba(26, 122, 82, 0.10);
+    --accent-glow-strong: rgba(26, 122, 82, 0.20);
+
+    --domain-checkout:      #b45309;
+    --domain-identity:      #6d28d9;
+    --domain-platform:      #0369a1;
+    --domain-observability: #be123c;
+
+    --dt-howto:       #b45309;
+    --dt-reference:   #0369a1;
+    --dt-explanation: #6d28d9;
+    --dt-tutorial:    #1a7a52;
+  }}
+
+  body.color-light::before {{ background: radial-gradient(ellipse 100% 50% at 50% 100%, rgba(26,122,82,0.04) 0%, transparent 60%); }}
+
+  body.color-light .shelf-surface::after {{ background: linear-gradient(90deg, transparent 0%, #d0d7de 10%, #d0d7de 90%, transparent 100%); }}
+  body.color-light .shelf-surface::before {{ background: radial-gradient(ellipse at center, rgba(0,0,0,0.08) 0%, transparent 70%); }}
+
+  body.color-light .domain-checkout .spine {{ background: linear-gradient(180deg, #fef9ee 0%, #fef3d0 40%, #fef9ee 100%); border-color: rgba(180,83,9,0.2); }}
+  body.color-light .domain-identity .spine  {{ background: linear-gradient(180deg, #f5f3ff 0%, #ede9fe 40%, #f5f3ff 100%); border-color: rgba(109,40,217,0.2); }}
+  body.color-light .domain-platform .spine  {{ background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 40%, #f0f9ff 100%); border-color: rgba(3,105,161,0.2); }}
+  body.color-light .domain-observability .spine {{ background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 40%, #fff1f2 100%); border-color: rgba(190,18,60,0.2); }}
+
+  body.color-light .domain-checkout .hex-shape      {{ background: linear-gradient(160deg, #fffbeb 0%, #fef3c7 100%); }}
+  body.color-light .domain-identity .hex-shape       {{ background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%); }}
+  body.color-light .domain-platform .hex-shape       {{ background: linear-gradient(160deg, #f0f9ff 0%, #e0f2fe 100%); }}
+  body.color-light .domain-observability .hex-shape  {{ background: linear-gradient(160deg, #fff1f2 0%, #ffe4e6 100%); }}
 
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 
@@ -158,11 +199,16 @@ def main():
     letter-spacing: 0.02em;
   }}
 
-  /* ═══════ Theme toggle ═══════ */
-  .theme-toggle {{
+  /* ═══════ Theme toggles ═══════ */
+  .header-toggles {{
     position: absolute;
     top: 3rem;
     right: 0;
+    display: flex;
+    gap: 0.5rem;
+  }}
+
+  .theme-toggle {{
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -507,28 +553,28 @@ def main():
   .domain-observability .spine::before {{ box-shadow: 0 0 20px rgba(251, 113, 133, 0.3), inset 0 0 20px rgba(251, 113, 133, 0.05); }}
 
   .domain-checkout .spine {{
-    background: linear-gradient(180deg, #2b2010 0%, #1f1808 40%, #2b2010 100%);
-    border-left: 1px solid rgba(245, 166, 35, 0.15);
-    border-right: 1px solid rgba(245, 166, 35, 0.08);
-    border-top: 1px solid rgba(245, 166, 35, 0.12);
+    background: linear-gradient(180deg, #332a18 0%, #2a2210 40%, #332a18 100%);
+    border-left: 1px solid rgba(245, 166, 35, 0.2);
+    border-right: 1px solid rgba(245, 166, 35, 0.1);
+    border-top: 1px solid rgba(245, 166, 35, 0.15);
   }}
   .domain-identity .spine {{
-    background: linear-gradient(180deg, #1c1630 0%, #140f24 40%, #1c1630 100%);
-    border-left: 1px solid rgba(167, 139, 250, 0.15);
-    border-right: 1px solid rgba(167, 139, 250, 0.08);
-    border-top: 1px solid rgba(167, 139, 250, 0.12);
+    background: linear-gradient(180deg, #231b38 0%, #1c1530 40%, #231b38 100%);
+    border-left: 1px solid rgba(167, 139, 250, 0.2);
+    border-right: 1px solid rgba(167, 139, 250, 0.1);
+    border-top: 1px solid rgba(167, 139, 250, 0.15);
   }}
   .domain-platform .spine {{
-    background: linear-gradient(180deg, #0f1d28 0%, #0a1520 40%, #0f1d28 100%);
-    border-left: 1px solid rgba(56, 189, 248, 0.15);
-    border-right: 1px solid rgba(56, 189, 248, 0.08);
-    border-top: 1px solid rgba(56, 189, 248, 0.12);
+    background: linear-gradient(180deg, #162430 0%, #112028 40%, #162430 100%);
+    border-left: 1px solid rgba(56, 189, 248, 0.2);
+    border-right: 1px solid rgba(56, 189, 248, 0.1);
+    border-top: 1px solid rgba(56, 189, 248, 0.15);
   }}
   .domain-observability .spine {{
-    background: linear-gradient(180deg, #281018 0%, #1f0c12 40%, #281018 100%);
-    border-left: 1px solid rgba(251, 113, 133, 0.15);
-    border-right: 1px solid rgba(251, 113, 133, 0.08);
-    border-top: 1px solid rgba(251, 113, 133, 0.12);
+    background: linear-gradient(180deg, #30161e 0%, #271018 40%, #30161e 100%);
+    border-left: 1px solid rgba(251, 113, 133, 0.2);
+    border-right: 1px solid rgba(251, 113, 133, 0.1);
+    border-top: 1px solid rgba(251, 113, 133, 0.15);
   }}
 
   .spine-title {{
@@ -724,10 +770,10 @@ def main():
     overflow: hidden;
   }}
 
-  .domain-checkout .hex-shape {{ background: linear-gradient(160deg, #1a1608 0%, #1f1a0a 100%); }}
-  .domain-identity .hex-shape {{ background: linear-gradient(160deg, #130f1e 0%, #17102a 100%); }}
-  .domain-platform .hex-shape {{ background: linear-gradient(160deg, #091517 0%, #0a191c 100%); }}
-  .domain-observability .hex-shape {{ background: linear-gradient(160deg, #1a0a10 0%, #1f0c14 100%); }}
+  .domain-checkout .hex-shape {{ background: linear-gradient(160deg, #2a2210 0%, #302814 100%); }}
+  .domain-identity .hex-shape {{ background: linear-gradient(160deg, #1c1530 0%, #211a38 100%); }}
+  .domain-platform .hex-shape {{ background: linear-gradient(160deg, #121e28 0%, #16222e 100%); }}
+  .domain-observability .hex-shape {{ background: linear-gradient(160deg, #221018 0%, #281420 100%); }}
 
   .hex-wrapper::before {{
     content: '';
@@ -891,21 +937,28 @@ def main():
     .domains-grid {{ gap: 2rem; }}
     .domain-column {{ min-width: 140px; }}
     :root {{ --hex-size: 58px; }}
-    .theme-toggle {{ position: static; margin: 0.75rem auto 0; display: flex; width: fit-content; }}
+    .header-toggles {{ position: static; margin: 0.75rem auto 0; justify-content: center; }}
+    .theme-toggle {{ position: static; }}
   }}
 </style>
 </head>
-<body class="theme-spines">
+<body class="theme-spines color-light">
 
 <div class="container">
   <header>
     <div class="logo">Doc<span>spine</span></div>
     <h1>Every service, <em>on the shelf</em></h1>
     <p class="subtitle">Search across all documentation or browse the stacks</p>
-    <button class="theme-toggle" id="themeToggle" title="Switch view">
-      <span class="theme-toggle-icon" id="themeIcon">⬡</span>
-      <span id="themeLabel">Hex Grid</span>
-    </button>
+    <div class="header-toggles">
+      <button class="theme-toggle" id="themeToggle" title="Switch view">
+        <span class="theme-toggle-icon" id="themeIcon">⬡</span>
+        <span id="themeLabel">Hex Grid</span>
+      </button>
+      <button class="theme-toggle" id="colorToggle" title="Switch color theme">
+        <span id="colorIcon">☀</span>
+        <span id="colorLabel">Light</span>
+      </button>
+    </div>
   </header>
 
   <section class="search-section">
@@ -995,6 +1048,29 @@ themeToggle.addEventListener('click', () => {{
   const next = current === 'spines' ? 'hex' : 'spines';
   applyTheme(next);
   localStorage.setItem(THEME_KEY, next);
+}});
+
+// ═══════ Color theme switcher (dark / light) ═══════
+const COLOR_KEY = 'docspine-color-theme';
+const colorToggle = document.getElementById('colorToggle');
+const colorIcon = document.getElementById('colorIcon');
+const colorLabel = document.getElementById('colorLabel');
+
+function applyColorTheme(theme) {{
+  document.body.classList.toggle('color-light', theme === 'light');
+  colorIcon.textContent = theme === 'light' ? '🌙' : '☀';
+  colorLabel.textContent = theme === 'light' ? 'Dark' : 'Light';
+}}
+
+(function () {{
+  const saved = localStorage.getItem(COLOR_KEY) || 'light';
+  applyColorTheme(saved);
+}})();
+
+colorToggle.addEventListener('click', () => {{
+  const next = document.body.classList.contains('color-light') ? 'dark' : 'light';
+  applyColorTheme(next);
+  localStorage.setItem(COLOR_KEY, next);
 }});
 
 // ═══════ Build bookshelf ═══════
