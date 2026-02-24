@@ -1,0 +1,15 @@
+# docs-registry.yaml
+# Registry of repos whose documentation is aggregated by this pipeline.
+# Add your service by opening a PR to add an entry here.
+
+routing:
+  group_by: domain   # "domain", "team", or "flat"
+
+repos:
+  - url: https://github.com/nondualworks/docspine.git
+    team: platform
+    domain: checkout
+    service: checkout-api
+    nav_title: Checkout API
+    branch: main
+    docs_path: examples/mkdocs-team
