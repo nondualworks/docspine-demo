@@ -1,23 +1,29 @@
 # docs-registry.yaml
 # Registry of repos whose documentation is aggregated by this pipeline.
-# Add your service by opening a PR to add an entry here.
+# Add a new service by opening a PR to add an entry under the appropriate repo.
 
 routing:
-  group_by: domain   # "domain", "team", or "flat"
+  group_by: domain
 
 repos:
-  - url: https://github.com/nondualworks/docspine.git
-    team: payments
-    domain: checkout
-    service: checkout-api
-    nav_title: Checkout API
+  - url: https://github.com/nondualworks/docspine-demo-commerce.git
     branch: main
-    docs_path: examples/mkdocs-team
+    services:
+      - docs_path: checkout-api
+      - docs_path: payment-gateway
+      - docs_path: order-service
 
-  - url: https://github.com/nondualworks/docspine.git
-    team: identity
-    domain: identity
-    service: auth-gateway
-    nav_title: Auth Gateway
+  - url: https://github.com/nondualworks/docspine-demo-platform.git
     branch: main
-    docs_path: examples/identity-team
+    services:
+      - docs_path: auth-gateway
+      - docs_path: user-service
+      - docs_path: notification-worker
+      - docs_path: base-images
+      - docs_path: config-service
+
+  - url: https://github.com/nondualworks/docspine-demo-ops.git
+    branch: main
+    services:
+      - docs_path: logging-gateway
+      - docs_path: metrics-collector
