@@ -18,7 +18,8 @@ The pipeline runs on every push to `main` and on a daily schedule to pick up ups
 
 | Service | Team | Domain |
 |---------|------|--------|
-| [Checkout API](https://nondualworks.github.io/docspine-demo/checkout/checkout-api/) | platform | checkout |
+| [Checkout API](https://nondualworks.github.io/docspine-demo/checkout/checkout-api/) | payments | checkout |
+| [Auth Gateway](https://nondualworks.github.io/docspine-demo/identity/auth-gateway/) | identity | identity |
 
 ## Try it yourself
 

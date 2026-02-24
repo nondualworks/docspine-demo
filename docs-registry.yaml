@@ -7,9 +7,17 @@ routing:
 
 repos:
   - url: https://github.com/nondualworks/docspine.git
-    team: platform
+    team: payments
     domain: checkout
     service: checkout-api
     nav_title: Checkout API
     branch: main
     docs_path: examples/mkdocs-team
+
+  - url: https://github.com/nondualworks/docspine.git
+    team: identity
+    domain: identity
+    service: auth-gateway
+    nav_title: Auth Gateway
+    branch: main
+    docs_path: examples/identity-team
